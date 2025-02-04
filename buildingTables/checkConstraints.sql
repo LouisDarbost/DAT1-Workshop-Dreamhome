@@ -1,6 +1,5 @@
 .open checkExercise.sqlite
--- Switching on Referential Integrity Rules - Foreign Key rules 
-PRAGMA foreign_keys = ON;
+
 
 --DROP TABLE IS EXITS, need to think the order about dropping as some are dependent 
 DROP TABLE IF EXISTS contactsExercise;
