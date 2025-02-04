@@ -6,7 +6,7 @@ PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS SalesStaff;
 DROP TABLE IF EXISTS appearance;
 DROP TABLE IF EXISTS contacts;
---create table
+--create parent table
 CREATE TABLE contacts (
     contactsID INTEGER PRIMARY KEY NOT NULL,
     fname VARCHAR(25),
@@ -24,7 +24,7 @@ VALUES
        ('Joe', 'Mehf', 'JoeMehf@you.com', '069420694200'),
        ('Mike', 'Abu', 'MikeAbu@co.org', '0777777777');
 
-
+-- My made Table
 CREATE TABLE SalesStaff (
     EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,  -- Automatically increment EmployeeID
     SalesPerson VARCHAR(25),
@@ -49,6 +49,7 @@ VALUES ('John Hunt', 'New York', '0949038', 'Dell', 'HP', 'Google'),
 INSERT INTO SalesStaff (SalesPerson)
 VALUES ('Mike Polse');
 
+-- Child Table to Contacts, need to be dropped first as relies on Contacts
 CREATE TABLE appearance (
     appearanceID INTEGER PRIMARY KEY NOT NULL,
     haircolour VARCHAR(20) CHECK ( haircolour IN('black', 'brown', 'blonde')),
