@@ -30,7 +30,8 @@ CREATE TABLE SalesStaff (
     OfficeNumber VARCHAR(15),  -- Specify data type for OfficeNumber
     Customer1 VARCHAR(8),
     Customer2 VARCHAR(8),
-    Customer3 VARCHAR(8)
+    Customer3 VARCHAR(8),
+    CONSTRAINT chk_OfficeNumber CHECK (OfficeNumber LIKE '0%' AND LENGTH(OfficeNumber) BETWEEN 0 AND 15)
 );
 
 -- INSERT DATA INTO TABLE
