@@ -28,9 +28,9 @@ CREATE TABLE SalesStaff (
     SalesPerson VARCHAR(25),
     SalesOffice VARCHAR(25),
     OfficeNumber VARCHAR(15),  -- Specify data type for OfficeNumber
-    Customer1 VARCHAR(8),
-    Customer2 VARCHAR(8),
-    Customer3 VARCHAR(8),
+    Customer1 VARCHAR(8) DEFAULT 'No information',
+    Customer2 VARCHAR(8) DEFAULT 'No information',
+    Customer3 VARCHAR(8) DEFAULT 'No information',
     CONSTRAINT chk_OfficeNumber CHECK (OfficeNumber LIKE '0%' AND LENGTH(OfficeNumber) BETWEEN 0 AND 15)
 );
 
@@ -43,3 +43,6 @@ VALUES
 INSERT INTO SalesStaff (SalesPerson, SalesOffice, OfficeNumber, Customer1, Customer2, Customer3)
 VALUES ('John Hunt', 'New York', '0949038', 'Dell', 'HP', 'Google'),
        ('Louis Darbost', 'London', '0949458', '', '', 'Apple' );
+
+INSERT INTO SalesStaff (SalesPerson)
+VALUES ('Mike Polse')
