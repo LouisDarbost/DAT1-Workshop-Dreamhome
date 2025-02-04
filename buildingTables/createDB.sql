@@ -1,9 +1,11 @@
 .open ddlpractice.sqlite
+-- Switching on Referential Integrity Rules - Foreign Key rules 
+PRAGMA foreign_keys = ON;
 
---DROP TABLE IS EXITS
-DROP TABLE IF EXISTS contacts;
+--DROP TABLE IS EXITS, need to think the order about dropping as some are dependent 
 DROP TABLE IF EXISTS SalesStaff;
-
+DROP TABLE IF EXISTS appearance;
+DROP TABLE IF EXISTS contacts;
 --create table
 CREATE TABLE contacts (
     contactsID INTEGER PRIMARY KEY NOT NULL,
@@ -45,4 +47,19 @@ VALUES ('John Hunt', 'New York', '0949038', 'Dell', 'HP', 'Google'),
        ('Louis Darbost', 'London', '0949458', '', '', 'Apple' );
 
 INSERT INTO SalesStaff (SalesPerson)
-VALUES ('Mike Polse')
+VALUES ('Mike Polse');
+
+CREATE TABLE appearance (
+    appearanceID INTEGER PRIMARY KEY NOT NULL,
+    haircolour VARCHAR(20) CHECK ( haircolour IN('black', 'brown', 'blonde')),
+    wearsGlasses BOOLEAN,
+    contactsID INTEGER, 
+    FOREIGN KEY (contactsID) REFERENCES contacts
+);
+
+INSERT INTO appearance (haircolour, wearsglasses, contactsID)
+VALUES ('brown', TRUE, 1 ),
+       ('black', FALSE, 2 ),
+       ('brown', TRUE, 3 );
+       
+       
